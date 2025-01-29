@@ -20,12 +20,12 @@ const PreviewModal = ({ open, params, handleClose }) => {
             let dataUrl;
 
             if (mimeType === "image/jpeg") {
-                dataUrl = await toJpeg(element, { pixelRatio: 10 });
+                dataUrl = await toJpeg(element, { pixelRatio: 5 });
             } else if (mimeType === "image/webp") {
-                const pngDataUrl = await toPng(element, { pixelRatio: 10 });
+                const pngDataUrl = await toPng(element, { pixelRatio: 5 });
                 dataUrl = await convertToWebp(pngDataUrl);
             } else {
-                dataUrl = await toPng(element, { pixelRatio: 10 });
+                dataUrl = await toPng(element, { pixelRatio: 5 });
             }
 
             const link = document.createElement("a");
@@ -66,10 +66,10 @@ const PreviewModal = ({ open, params, handleClose }) => {
                     </button>
                 </div>
 
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-4 max-h-[450px] overflow-y-auto'>
 
-                    <div className="w-full h-96 rounded bg-slate-400">
-                        <img id="preview-image" src={params?.preview} alt="preview_image" className="w-full h-full object-contain" />
+                    <div className="w-full rounded">
+                        <img id="preview-image" src={params?.preview} alt="preview_image" className="object-contain mx-auto" />
                     </div>
 
                 </div>

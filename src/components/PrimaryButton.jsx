@@ -17,7 +17,7 @@ const PrimaryButton = ({
             tabIndex={0}
             disabled={disabled}
             onClick={onClick}
-            className={`active:bg-opacity-100 hover:bg-opacity-90 ease-linear transition-all duration-75  h-11 ${width || "w-full"
+            className={`active:bg-opacity-100 hover:bg-opacity-90 ease-linear transition-all duration-75  h-10 ${width || "w-full"
                 } px-5 rounded ${color} relative ${textColor || "text-AliceBlue"
                 } 3xl:text-base text-sm font-medium flex items-center justify-center ${disabled ? "cursor-not-allowed opacity-50" : ""
                 }`}
@@ -33,7 +33,7 @@ const PrimaryButton = ({
                     />
                 )}
 
-                <span className="lg:text-base text-sm text-white">{label}</span>
+                <span className="text-sm text-white font-medium">{label}</span>
             </div>
         </button>
     );

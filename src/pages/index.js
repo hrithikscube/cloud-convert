@@ -29,7 +29,16 @@ const Home = () => {
     file: '',
     preview: '',
     from_type: 'image/png',
-    to_type: 'image/webp'
+    to_type: 'image/webp',
+
+    files: [
+      {
+        file: '',
+        preview: '',
+        from_type: '',
+        to_type: ''
+      }
+    ]
   })
 
   const handleChange = (e) => {
@@ -40,7 +49,7 @@ const Home = () => {
     })
   }
 
-  const fileRef = useRef()
+  const fileRef = useRef(null)
 
   const addImage = () => {
     if (fileRef.current) {
@@ -68,6 +77,19 @@ const Home = () => {
     }
   };
 
+  const handleAddNewFile = () => {
+    setParams({
+      ...params,
+      file: '',
+      preview: ''
+    })
+
+    if (fileRef.current) {
+      fileRef.current.value = '';
+    }
+  }
+
+
   return (
     <div className='flex flex-col w-full h-screen'>
 
@@ -80,8 +102,11 @@ const Home = () => {
 
         <div className='flex items-center justify-between lg:w-9/12 mx-auto'>
 
-          <h2 className='lg:text-2xl text-xl font-medium text-white'>cloud <span className='font-bold'>convert</span></h2>
+          <div className='flex items-center gap-4'>
 
+            <img src="/headerlogo.png" alt="headerlogo" className='w-10 h-10 object-contain' />
+            <h2 className='lg:text-2xl text-xl font-medium text-white tracking-wider'>cloud<span className='font-bold text-white'>convert</span></h2>
+          </div>
         </div>
 
       </div>
@@ -143,39 +168,50 @@ const Home = () => {
               />
 
               <input
+                type="file"
                 ref={fileRef}
                 name="file"
                 onChange={handleFileChange}
-                type="file"
                 className="hidden"
                 accept={params?.from_type}
               />
 
             </div>
             :
-            <div className='flex flex-col lg:w-9/12 mx-auto gap-4 bg-white shadow'>
+            <>
+              <div className='flex flex-col lg:w-9/12 mx-auto gap-4 bg-white shadow'>
 
-              <div className='grid grid-cols-5 items-center px-4 py-2'>
+                <div className='grid grid-cols-5 items-center px-4 py-2'>
 
-                <div className='col-span-2'>
-                  <p className='lg:text-base text-sm font-medium text-[#666666]'>File Name</p>
-                </div>
+                  <div className='col-span-2'>
+                    <p className='text-sm font-medium text-[#666666]'>File Name</p>
+                  </div>
 
-                <div className='text-start'>
-                  <p className='lg:text-base text-sm font-medium text-[#666666]'>Convert to <span className='text-[#121212]'>{params?.to_type}</span></p>
-                </div>
+                  <div className='text-start'>
+                    <p className='text-sm font-medium text-[#666666]'>Convert to <span className='text-[#121212] font-semibold'>{params?.to_type}</span></p>
+                  </div>
 
-                <div className='flex items-center justify-center'>
-                  <p className='lg:text-sm text-xs font-medium bg-[#28a745] text-white w-fit py-1 px-3 rounded'>Finished</p>
-                </div>
+                  <div className='flex items-center justify-center'>
+                    <p className='lg:text-sm text-xs font-medium bg-[#28a745] text-white w-fit py-1 px-3 rounded'>Finished</p>
+                  </div>
 
-                <div className='text-start'>
-                  <PrimaryButton onClick={() => toggleModalOpen('preview')} color="bg-[#28a745]" width={"w-full"} label="Preview" />
+                  <div className='text-start'>
+                    <PrimaryButton onClick={() => toggleModalOpen('preview')} color="bg-[#303030]" width={"w-10/12 ml-auto"} label="Preview" />
+                  </div>
+
                 </div>
 
               </div>
 
-            </div>
+              <div className='flex flex-col lg:w-9/12 mx-auto items-centr justify-center'>
+
+                <PrimaryButton
+                  width={"w-fit mx-auto"}
+                  onClick={handleAddNewFile}
+                  label="Add New"
+                />
+              </div>
+            </>
         }
 
       </div>

@@ -98,7 +98,7 @@ const Home = () => {
       </Head>
 
       {/* Header */}
-      <div className='w-full py-4 bg-[#202020]'>
+      <div className='w-full py-4 bg-[#202020] lg:px-0 px-6'>
 
         <div className='flex items-center justify-between lg:w-9/12 mx-auto'>
 
@@ -112,19 +112,19 @@ const Home = () => {
       </div>
 
 
-      <div className='w-full bg-[#303030]'>
+      <div className='w-full bg-[#303030] lg:px-0 px-6'>
 
-        <div className='flex lg:w-9/12 mx-auto items-center h-full py-16'>
+        <div className='flex lg:flex-row flex-col lg:w-9/12 mx-auto items-center h-full py-16 lg:gap-0 gap-6'>
 
-          <div className='lg:w-1/2 h-full flex flex-col gap-2'>
+          <div className='lg:w-1/2 w-full h-full flex flex-col gap-2'>
             <h2 className='lg:text-3xl text-2xl font-bold text-white'>File Converter</h2>
             <p className='lg:text-base text-sm text-white'>
-              CloudConvert is an online file converter. We support nearly all audio, video, document, ebook, archive, image, spreadsheet, and presentation formats. To get started, use the button below and select files to convert from your computer.
+              CloudConvert is an online file converter that supports WEBP, PNG, JPEG, and JPG image formats, allowing seamless file conversions while maintaining quality.
             </p>
 
           </div>
 
-          <div className='lg:w-1/2 h-full flex flex-row items-center justify-center gap-4'>
+          <div className='lg:w-1/2 w-full h-full flex flex-row lg:items-center lg:justify-center gap-4'>
 
             <p className='lg:text-base text-sm text-white'>convert</p>
 
@@ -179,11 +179,11 @@ const Home = () => {
             </div>
             :
             <>
-              <div className='flex flex-col lg:w-9/12 mx-auto gap-4 bg-white shadow'>
+              <div className='flex flex-col lg:w-9/12 w-full mx-auto gap-4 bg-white shadow'>
 
-                <div className='grid grid-cols-5 items-center px-4 py-2'>
+                <div className='grid lg:grid-cols-5 items-center px-4 py-2 w-full debug'>
 
-                  <div className='col-span-2'>
+                  <div className='lg:col-span-2'>
                     <p className='text-sm font-medium text-[#666666]'>File Name</p>
                   </div>
 
